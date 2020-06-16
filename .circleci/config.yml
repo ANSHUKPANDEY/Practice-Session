@@ -16,14 +16,14 @@ jobs:
             sudo cp -r pyapp/init.py app/
             sudo cp -r pyapp/views.py app/
             sudo pip install Flask
+            sudo docker login -u anshukpandey --password Wyndham02$
       - run:  
           name: Build Docker Image
           command: |
-           echo"$pwd"
-           docker build -t pytest -f pyapp/Dockerfile .
+           docker build -t anshukpandey/pythonapp:pytest -f pyapp/Dockerfile .
       - run:     
-          name: Create docker container
+          name: Push Image To DockerHub
           command: |
-           docker run -d -p 56733:80 --name=pyapp pytest
+           docker push anshukpandey/pythonapp:pytest
 
 

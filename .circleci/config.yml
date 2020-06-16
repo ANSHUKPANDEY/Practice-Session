@@ -5,7 +5,8 @@ jobs:
       - image: circleci/python:3.6.2-stretch-browsers
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
           name: Create Initialisatiion script
           command: |
@@ -24,6 +25,7 @@ jobs:
       - run:     
           name: Push Image To DockerHub
           command: |
+           docker login -u anshukpandey --password Wyndham02$
            docker push anshukpandey/pythonapp:pytest
 
 

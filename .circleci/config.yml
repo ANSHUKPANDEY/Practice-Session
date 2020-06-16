@@ -19,11 +19,11 @@ jobs:
       - run:  
           name: Build Docker Image
           command: |
-           docker build -t anshukpandey/pythonapp:pytest -f pyapp/Dockerfile .
+           docker build -t anshukpandey/pythonapp:$CIRCLE_BUILD_NUM -f pyapp/Dockerfile .
       - run:     
           name: Push Image To DockerHub
           command: |
            docker login -u anshukpandey --password Wyndham02$
-           docker push anshukpandey/pythonapp:pytest
+           docker push anshukpandey/pythonapp:$CIRCLE_BUILD_NUM
 
 

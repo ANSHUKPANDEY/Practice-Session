@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-        - run:
+      - run:
           name: Create Initialisatiion script
           command: |
             sudo mkdir -p app/static app/templates
@@ -16,7 +16,6 @@ jobs:
             sudo cp -r pyapp/init.py app/
             sudo cp -r pyapp/views.py app/
             sudo pip install Flask
-            sudo docker login -u anshukpandey --password Wyndham02$
       - run:  
           name: Build Docker Image
           command: |
